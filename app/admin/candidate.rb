@@ -7,10 +7,13 @@ ActiveAdmin.register Candidate do
   	column "Id" do |candidate|
   		raw("<a href='/summary/candidates/#{candidate.id}'>#{candidate.id}</a>")
   	end
-  	column :firstname
-  	column :lastname
-  	column :email
+    if current_user.access > 2
+  	  column :firstname
+  	  column :lastname
+  	  column :email
+    end
   	column :education
+    column :experience
   end
 
    show do
@@ -34,6 +37,12 @@ ActiveAdmin.register Candidate do
     end
   end
 
+  # if current_user.access > 2
+  #   filter(:firstname)
+  #   filter(:lastname)
+  #   filter(:email)
+  # end
+
   filter(:preferred_skills, {
   as: :select,
   multiple: true,
@@ -53,10 +62,7 @@ ActiveAdmin.register Candidate do
   },
   label: "Preferred Education"
 })
-
-  filter(:firstname)
-  filter(:lastname)
-  filter(:email)
+  filter(:experience)
   filter(:first_preference)
   filter(:second_preference)
 end
