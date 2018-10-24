@@ -1,9 +1,19 @@
 class Candidate < ActiveRecord::Base
-	belongs_to :first_preference
+    belongs_to :first_preference
     belongs_to :second_preference
+    belongs_to :education
+
     has_and_belongs_to_many :interests
     has_and_belongs_to_many :aspirations
     has_and_belongs_to_many :themes
+    has_and_belongs_to_many :preferred_skills
+    has_and_belongs_to_many :peducations
+
+
+        def preferred_education
+            return self.peducations
+        end
+
 	def name
 		return self.firstname + " " + self.lastname
 	end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_153658) do
+ActiveRecord::Schema.define(version: 2018_10_24_160155) do
 
   create_table "aspirations", force: :cascade do |t|
     t.string "title"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_10_24_153658) do
     t.integer "experience"
     t.integer "first_preference_id"
     t.integer "second_preference_id"
+    t.integer "education_id"
   end
 
   create_table "candidates_interests", id: false, force: :cascade do |t|
@@ -40,6 +41,20 @@ ActiveRecord::Schema.define(version: 2018_10_24_153658) do
     t.index ["interest_id"], name: "index_candidates_interests_on_interest_id"
   end
 
+  create_table "candidates_peducations", id: false, force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "peducation_id"
+    t.index ["candidate_id"], name: "index_candidates_peducations_on_candidate_id"
+    t.index ["peducation_id"], name: "index_candidates_peducations_on_peducation_id"
+  end
+
+  create_table "candidates_preferred_skills", id: false, force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "preferred_skill_id"
+    t.index ["candidate_id"], name: "index_candidates_preferred_skills_on_candidate_id"
+    t.index ["preferred_skill_id"], name: "index_candidates_preferred_skills_on_preferred_skill_id"
+  end
+
   create_table "candidates_themes", id: false, force: :cascade do |t|
     t.integer "candidate_id"
     t.integer "theme_id"
@@ -47,11 +62,23 @@ ActiveRecord::Schema.define(version: 2018_10_24_153658) do
     t.index ["theme_id"], name: "index_candidates_themes_on_theme_id"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.string "title"
+  end
+
   create_table "first_preferences", force: :cascade do |t|
     t.string "title"
   end
 
   create_table "interests", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "peducations", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "preferred_skills", force: :cascade do |t|
     t.string "title"
   end
 
