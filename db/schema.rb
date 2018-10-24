@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_152230) do
+ActiveRecord::Schema.define(version: 2018_10_24_153658) do
+
+  create_table "aspirations", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "aspirations_candidates", id: false, force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "aspiration_id"
+    t.index ["aspiration_id"], name: "index_aspirations_candidates_on_aspiration_id"
+    t.index ["candidate_id"], name: "index_aspirations_candidates_on_candidate_id"
+  end
 
   create_table "candidates", force: :cascade do |t|
     t.string "firstname"
@@ -29,6 +40,13 @@ ActiveRecord::Schema.define(version: 2018_10_24_152230) do
     t.index ["interest_id"], name: "index_candidates_interests_on_interest_id"
   end
 
+  create_table "candidates_themes", id: false, force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "theme_id"
+    t.index ["candidate_id"], name: "index_candidates_themes_on_candidate_id"
+    t.index ["theme_id"], name: "index_candidates_themes_on_theme_id"
+  end
+
   create_table "first_preferences", force: :cascade do |t|
     t.string "title"
   end
@@ -38,6 +56,10 @@ ActiveRecord::Schema.define(version: 2018_10_24_152230) do
   end
 
   create_table "second_preferences", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "themes", force: :cascade do |t|
     t.string "title"
   end
 
