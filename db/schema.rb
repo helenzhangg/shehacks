@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_145326) do
+ActiveRecord::Schema.define(version: 2018_10_24_151737) do
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.boolean "full_duration"
+    t.integer "experience"
+    t.integer "first_preference_id"
+    t.integer "second_preference_id"
+  end
+
+  create_table "first_preferences", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "second_preferences", force: :cascade do |t|
+    t.string "title"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "firstname"
