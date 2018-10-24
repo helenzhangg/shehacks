@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_151737) do
+ActiveRecord::Schema.define(version: 2018_10_24_152230) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "firstname"
@@ -22,7 +22,18 @@ ActiveRecord::Schema.define(version: 2018_10_24_151737) do
     t.integer "second_preference_id"
   end
 
+  create_table "candidates_interests", id: false, force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "interest_id"
+    t.index ["candidate_id"], name: "index_candidates_interests_on_candidate_id"
+    t.index ["interest_id"], name: "index_candidates_interests_on_interest_id"
+  end
+
   create_table "first_preferences", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "interests", force: :cascade do |t|
     t.string "title"
   end
 
