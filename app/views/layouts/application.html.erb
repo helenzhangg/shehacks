@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Shehacks</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+<head>
+  <title>TechTogether Teammate Matching</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <div class="container">
+    <%= render 'layouts/messages' %>
     <%= yield %>
-  </body>
+    <%= render 'layouts/footer' %>
+  </div>
+
+</body>
 </html>

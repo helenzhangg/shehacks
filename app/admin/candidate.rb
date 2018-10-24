@@ -5,7 +5,7 @@ ActiveAdmin.register Candidate do
   index do
   	selectable_column
   	column "Id" do |candidate|
-  		raw("<a href='#'>#{candidate.id}</a>")
+  		raw("<a href='/summary/candidates/#{candidate.id}'>#{candidate.id}</a>")
   	end
   	column :firstname
   	column :lastname
