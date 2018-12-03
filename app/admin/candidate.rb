@@ -18,9 +18,11 @@ ActiveAdmin.register Candidate do
 
    show do
     attributes_table do
-      row :firstname
-      row :lastname
-      row ("Email") {raw("<a href='mailto: #{candidate.email}'>#{candidate.email}</a>")}
+      if current_user.access_level > 2
+        row :firstname
+        row :lastname
+        row ("Email") {raw("<a href='mailto: #{candidate.email}'>#{candidate.email}</a>")}
+      end
       row :experience
       row :education
       row :first_preference

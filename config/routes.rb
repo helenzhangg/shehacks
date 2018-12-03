@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   get '/summary/logout', to: 'logins#sdestroy'
   get '/summary/login', to: 'logins#snew'
   post '/summary/login', to: 'logins#screate'
+
+  get '/typeform', to: 'welcome#typeformget'
+  post '/typeform', to: 'welcome#typeformpost'
 end
