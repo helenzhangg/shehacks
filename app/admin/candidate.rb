@@ -30,6 +30,8 @@ ActiveAdmin.register Candidate do
       row :school_type
       row :graduation
       row :major
+      row :traveling_from
+      row ("What does TechTogether mean to them?") {candidate.meaning}
       row ("Preferred Pronouns") {candidate.pronouns}
       row ("First Hackathon?") {candidate.first_hackathon ? "Yes" : "No"}
       row ("Skills") {candidate.proficiencies}
