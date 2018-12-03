@@ -1,7 +1,7 @@
 class Candidate < ActiveRecord::Base
-    belongs_to :first_preference
-    belongs_to :second_preference
-    belongs_to :education
+    # belongs_to :first_preference
+    # belongs_to :second_preference
+    # belongs_to :education
 
     serialize :proficiencies
     serialize :pronouns
