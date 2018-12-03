@@ -36,7 +36,7 @@ ActiveAdmin.register Candidate do
       row ("How did they hear about TechTogether?") {candidate.source}
       row ("Github") {(candidate.github != "" and candidate.github != nil)? raw("<a href='#{candidate.github}' target='_blank'>#{candidate.github}</a>") : "No link provided."}
       row ("Linkedin") {(candidate.linkedin != "" and candidate.linkedin != nil) ? raw("<a href='#{candidate.linkedin}' target='_blank'>#{candidate.linkedin}</a>") : "No link provided."}
-      row ("Personal Website") {(candidate.website != nil and candidate.website != "") ? raw("a href='#{candidate.website}' target='_blank'>#{candidate.website}</a>") : "No link provided."}
+      row ("Personal Website") {(candidate.website != nil and candidate.website != "") ? raw("<a href='#{candidate.website}' target='_blank'>#{candidate.website}</a>") : "No link provided."}
       row ("Resume") {(candidate.resume != "" and candidate.resume != nil) ? raw("<a href='#{candidate.resume}' target='_blank'>#{candidate.resume}</a>") : "No resume on file."}
       # row "Preferred Education" do |person|
       #   (person.preferred_education.map{|p| raw("<a href='#' target='_blank'>#{p.title}</a>")}).join(', ').html_safe
