@@ -83,6 +83,7 @@ class WelcomeController < ApplicationController
 				end
 			end
 			begin
+				puts "Pronouns: #{pronouns}"
 				Candidate.create(firstname: fname, lastname: lname, email: email, pronouns: pronouns, roles: roles,
 					age: age, school: school, school_type: school_type, major: major, graduation: graduation,
 					traveling_from: traveling_from, proficiencies: proficiencies, hexperience: experience,
