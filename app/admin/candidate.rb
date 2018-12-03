@@ -1,5 +1,5 @@
 ActiveAdmin.register Candidate do
-  permit_params :firstname, :lastname, :experience, :education, :first_preference,
+  permit_params :firstname, :lastname, :experience, :school, :proficiencies,
   :second_preference, peducations: [], preferred_skills: []
 
   index do
@@ -12,8 +12,8 @@ ActiveAdmin.register Candidate do
   	  column :lastname
   	  column :email
     end
-  	column :education
-    column :experience
+  	column :school
+    column :hexperience
   end
 
    show do
@@ -23,17 +23,19 @@ ActiveAdmin.register Candidate do
         row :lastname
         row ("Email") {raw("<a href='mailto: #{candidate.email}'>#{candidate.email}</a>")}
       end
-      row :experience
-      row :education
-      row :first_preference
-      row :second_preference
-      row "Preferred Education" do |person|
-        (person.preferred_education.map{|p| raw("<a href='#' target='_blank'>#{p.title}</a>")}).join(', ').html_safe
-      end
+      row ("Experience") {candidate.hexperience}
+      row :school
+      row :school_type
+      row :pronouns
+      row ("First Hackathon?") {candidate.first_hackathon ? "Yes" : "No"}
+      
+      # row "Preferred Education" do |person|
+      #   (person.preferred_education.map{|p| raw("<a href='#' target='_blank'>#{p.title}</a>")}).join(', ').html_safe
+      # end
 
-      row "Preferred Skills" do |person|
-        (person.preferred_skills.map{|p| raw("<a href='#' target='_blank'>#{p.title}</a>")}).join(', ').html_safe
-      end
+      # row "Preferred Skills" do |person|
+      #   (person.preferred_skills.map{|p| raw("<a href='#' target='_blank'>#{p.title}</a>")}).join(', ').html_safe
+      # end
 
       active_admin_comments
     end
