@@ -9,6 +9,7 @@ class WelcomeController < ApplicationController
 	end
 
 	def typeformpost
+		puts "Received: #{params}"
 		render :json => "Typeform Post called."
 	end
 end
