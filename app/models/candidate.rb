@@ -3,6 +3,10 @@ class Candidate < ActiveRecord::Base
     belongs_to :second_preference
     belongs_to :education
 
+    serialize :proficiencies
+    serialize :pronouns
+    serialize :roles
+
     has_and_belongs_to_many :interests
     has_and_belongs_to_many :aspirations
     has_and_belongs_to_many :themes

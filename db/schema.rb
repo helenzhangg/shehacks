@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_180919) do
+ActiveRecord::Schema.define(version: 2018_12_03_025934) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -48,6 +48,22 @@ ActiveRecord::Schema.define(version: 2018_10_24_180919) do
     t.integer "education_id"
     t.integer "age"
     t.string "preferred_age"
+    t.string "pronouns"
+    t.string "school"
+    t.string "school_type"
+    t.string "major"
+    t.string "graduation"
+    t.string "traveling_from"
+    t.text "proficiencies"
+    t.boolean "first_hackathon"
+    t.text "meaning"
+    t.string "resume"
+    t.string "linkedin"
+    t.string "github"
+    t.string "website"
+    t.string "source"
+    t.string "roles"
+    t.string "hexperience"
   end
 
   create_table "candidates_interests", id: false, force: :cascade do |t|
