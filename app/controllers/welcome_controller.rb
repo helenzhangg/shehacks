@@ -88,7 +88,7 @@ class WelcomeController < ApplicationController
 					age: age, school: school, school_type: school_type, major: major, graduation: graduation,
 					traveling_from: traveling_from, proficiencies: proficiencies, hexperience: experience,
 					first_hackathon: first_hackathon, meaning: meaning, resume: resume, linkedin: linkedin,
-					github: github, website: website, soruce: source)
+					github: github, website: website, source: source)
 			rescue => e
 				puts "Error creating candidate: #{e}"
 			end
