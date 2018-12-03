@@ -34,9 +34,6 @@ class WelcomeController < ApplicationController
 				elsif rid == "k95KR81FT5PX"	
 					# Preferred pronouns
 					pronouns = response["choices"]["labels"]
-				elsif rid == "ey4GBgjOX9J2"
-					# Roles they'd like to get involved in
-					roles = response["choice"]["label"]
 				elsif rid == "GFv0Kh57vhrx"
 					# Age
 					age = response["number"]
