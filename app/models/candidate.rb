@@ -6,6 +6,9 @@ class Candidate < ActiveRecord::Base
     serialize :proficiencies
     serialize :pronouns
     serialize :roles
+    serialize :tinterests
+    serialize :motivations
+    serialize :focus
 
     has_and_belongs_to_many :interests
     has_and_belongs_to_many :aspirations

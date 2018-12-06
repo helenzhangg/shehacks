@@ -8,6 +8,90 @@ class WelcomeController < ApplicationController
 		render :json => "Typeform Get called."
 	end
 
+	def rsvppost
+		# TODO: Input into Candidates model
+		# All questions in RSVP Typeform
+		# No access to names and emails only
+		# Declare fields
+		fname = ""; lname = ""; email = ""; dietary_restrictions = ""; tshirt_size = "";
+		hackathon_count = ""; full_duration = false; travel_reimbursement_requested = false;
+		matching_optin = ""; foreign_country = false; proficiencies = []; most_experienced = [];
+		tinterests = []; motivations = []; focus = []; background_preference = "";
+		additional_info = ""
+		responses = params["form_response"]["answers"]
+		form_id = params["form_response"]["form_id"]
+		if form_id == "C0wvXW"
+			for response in responses
+				rid = response["field"]["id"]
+				if rid == "bTIgfokIAqzu"
+					fname = response["text"]
+				elsif rid == "arglSguJWFoX"
+					lname = response["text"]
+				elsif rid == "ifrTkcLZ3l2V"
+					email = response["email"]
+				elsif rid == "Eswwy9RVOoQh"
+					dietary_restrictions = response["choice"]["label"]
+				elsif rid == "O9fC4aHKi4d7"
+					tshirt_size = response["choice"]["label"]
+				elsif rid == "FAqGv8rd5aNG"
+					hackathon_count = response["choice"]["label"]
+				elsif rid == "HvZVspXDbeFu"
+					full_duration = response["boolean"]
+				elsif rid == "MFVi1haawBsD"
+					travel_reimbursement_requested = response["boolean"]
+				elsif rid == "TBOOQYuV6lzo"
+					foreign_country = response["boolean"]
+				elsif rid == "Nx3fJlrXQxSX"
+					matching_optin = response["choice"]["label"]
+				elsif rid == "QPo7mNzKWEnp"
+					# hexperience
+					programming_duration = response["choice"]["label"]
+				elsif rid == "gLLjjxowcHzu"
+					proficiencies = response["choices"]["labels"]
+				elsif rid == "A4lbYsnhIeRu"
+					most_experienced = response["choices"]["labels"]
+				elsif rid == "ahJ7BJQLaPpH"
+					focus = response["choices"]["labels"]
+				elsif rid == "N11sIuWk4yfL"
+					motivations = response["choices"]["labels"]
+				elsif rid == "seXwsc4iV7oR"
+					tinterests = repsonse["choices"]["labels"]
+				elsif rid == "yQRbS4TJKqIA"
+					background_preference = response["choice"]["label"]
+				elsif rid == "VGRpxJuewo2w"
+					additional_info = response["text"]
+				end
+				begin
+					candidate = Candidate.find_by(email: email)
+					if candidate != nil 
+						candidate.dietary_restrictions = dietary_restrictions
+						candidate.tshirt_size = tshirt_size
+						candidate.hackathon_count = hackathon_count
+						candidate.full_duration = full_duration
+						candidate.travel_reimbursement_requested = travel_reimbursement_requested
+						candidate.foreign_country = foreign_country
+						candidate.matching_optin = matching_optin
+						candidate.hexperience = programming_duration
+						candidate.proficiencies = proficiencies
+						candidate.most_experienced = most_experienced
+						candidate.tinterests = tinterests
+						candidate.focus = focus
+						candidate.motivations = motivations
+						candidate.additional_info = additional_info
+						if matching_optin == "Yes, I'd like to get matched!"
+						    candidate.matching_optin = true 
+						else
+							candidate.matching_optin = false
+						end
+					end
+					candidate.save
+				rescue => e
+					puts "Error updating candidate info: #{e}"
+				end
+			end
+		end
+	end
+
 	def typeformpost
 		# Declare fields
 		fname = ""; lname = ""; email = ""; pronouns = []; roles = []; age = 0

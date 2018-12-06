@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_025934) do
+ActiveRecord::Schema.define(version: 2018_12_06_152307) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(version: 2018_12_03_025934) do
     t.string "source"
     t.string "roles"
     t.string "hexperience"
+    t.string "dietary_restrictions"
+    t.string "tshirt_size"
+    t.string "hackathon_count"
+    t.boolean "travel_reimbursement_requested", default: false
+    t.boolean "matching_optin", default: false
+    t.boolean "foreign_country", default: false
+    t.text "most_experienced"
+    t.text "tinterests"
+    t.text "motivations"
+    t.text "focus"
+    t.string "background_preference"
+    t.text "additional_info"
   end
 
   create_table "candidates_interests", id: false, force: :cascade do |t|

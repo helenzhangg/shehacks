@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   get '/typeform', to: 'welcome#typeformget'
   post '/typeform', to: 'welcome#typeformpost'
+
+  post '/rsvp', to: 'welcome#rsvppost'
 end
