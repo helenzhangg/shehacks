@@ -63,6 +63,7 @@ class WelcomeController < ApplicationController
 				end
 				begin
 					candidate = Candidate.find_by(email: email)
+					puts "Email: #{email} and #{fname}"
 					if candidate != nil 
 						candidate.dietary_restrictions = dietary_restrictions
 						candidate.tshirt_size = tshirt_size
@@ -83,8 +84,8 @@ class WelcomeController < ApplicationController
 						else
 							candidate.matching_optin = false
 						end
+						candidate.save
 					end
-					candidate.save
 				rescue => e
 					puts "Error updating candidate info: #{e}"
 				end
