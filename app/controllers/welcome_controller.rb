@@ -28,6 +28,7 @@ class WelcomeController < ApplicationController
 				elsif rid == "arglSguJWFoX"
 					lname = response["text"]
 				elsif rid == "ifrTkcLZ3l2V"
+					puts "We have: #{response['email']}"
 					email = response["email"]
 				elsif rid == "Eswwy9RVOoQh"
 					dietary_restrictions = response["choice"]["label"]
@@ -55,7 +56,7 @@ class WelcomeController < ApplicationController
 				elsif rid == "N11sIuWk4yfL"
 					motivations = response["choices"]["labels"]
 				elsif rid == "seXwsc4iV7oR"
-					tinterests = repsonse["choices"]["labels"]
+					tinterests = response["choices"]["labels"]
 				elsif rid == "yQRbS4TJKqIA"
 					background_preference = response["choice"]["label"]
 				elsif rid == "VGRpxJuewo2w"
