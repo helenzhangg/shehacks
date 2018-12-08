@@ -2,7 +2,8 @@ ActiveAdmin.register Candidate do
   permit_params :firstname, :lastname, :experience, :school, :proficiencies,
   :second_preference, peducations: [], preferred_skills: []
 
-  index do
+  index do |indd|
+    if not current_user.researcher
   	selectable_column
   	column "Id" do |candidate|
   		raw("<a href='/summary/candidates/#{candidate.id}'>#{candidate.id}</a>")
@@ -15,7 +16,24 @@ ActiveAdmin.register Candidate do
   	column :school
     column "Experience" do |c|
       c.hexperience
-    end 
+    end
+    else
+      if :matching_optin
+            selectable_column
+    column "Id" do |candidate|
+      raw("<a href='/summary/candidates/#{candidate.id}'>#{candidate.id}</a>")
+    end
+    if current_user.access > 2
+      column :firstname
+      column :lastname
+      column :email
+    end
+    column :school
+    column "Experience" do |c|
+      c.hexperience
+    end
+      end
+    end
   end
 
    show do

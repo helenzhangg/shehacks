@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_152307) do
+ActiveRecord::Schema.define(version: 2018_12_08_060222) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_152307) do
     t.integer "access_level", default: 0
     t.string "username"
     t.string "phone"
+    t.boolean "researcher", default: false
   end
 
 end
