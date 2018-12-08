@@ -61,56 +61,6 @@ ActiveAdmin.register Candidate do
     end
   end
 
-  json do
-    if current_user.researcher
-      if :matching_optin
-        column "Id" do |c| 
-          c.id
-        end 
-        column :full_duration
-        column "Experience" do |c|
-          c.hexperience
-        end
-        column :age
-        column :pronouns 
-        column :school
-        column :school_type
-        column :major
-        column :graduation
-        column :traveling_from
-        column :proficiencies
-        column :first_hackathon
-        column :meaning
-        column :source
-      end
-    end
-  end
-
-  xml do
-    if current_user.researcher
-      if :matching_optin
-        column "Id" do |c| 
-          c.id
-        end 
-        column :full_duration
-        column "Experience" do |c|
-          c.hexperience
-        end
-        column :age
-        column :pronouns 
-        column :school
-        column :school_type
-        column :major
-        column :graduation
-        column :traveling_from
-        column :proficiencies
-        column :first_hackathon
-        column :meaning
-        column :source
-      end
-    end
-  end
-
    show do
     attributes_table do
       if current_user.access_level > 2
