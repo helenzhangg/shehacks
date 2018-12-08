@@ -17,7 +17,11 @@ ActiveAdmin.register Candidate do
   	selectable_column
     
   	column "Id" do |candidate|
-  		raw("<a href='/summary/candidates/#{candidate.id}'>#{candidate.id}</a>")
+      if current_user.researcher
+        candidate.id 
+      else
+  		  raw("<a href='/summary/candidates/#{candidate.id}'>#{candidate.id}</a>")
+      end
   	end
     if current_user.access > 2
   	  column :firstname
