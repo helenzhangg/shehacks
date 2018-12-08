@@ -91,6 +91,7 @@ class WelcomeController < ApplicationController
 				end
 			end
 		end
+		render :json => "received"
 	end
 
 	def typeformpost
