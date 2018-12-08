@@ -1,10 +1,21 @@
-ActiveAdmin.register Candidate do
+ActiveAdmin.register Candidate do 
   permit_params :firstname, :lastname, :experience, :school, :proficiencies,
   :second_preference, peducations: [], preferred_skills: []
 
-  index do |indd|
-    if not current_user.researcher
+  
+ scope :corr, :default => true do |c|
+  if current_user.researcher
+    c.corr
+  else
+    c.all
+  end
+  end
+  
+
+  index do 
+   
   	selectable_column
+    
   	column "Id" do |candidate|
   		raw("<a href='/summary/candidates/#{candidate.id}'>#{candidate.id}</a>")
   	end
@@ -17,28 +28,12 @@ ActiveAdmin.register Candidate do
     column "Experience" do |c|
       c.hexperience
     end
-    else
-      if :matching_optin
-            selectable_column
-    column "Id" do |candidate|
-      raw("<a href='/summary/candidates/#{candidate.id}'>#{candidate.id}</a>")
-    end
-    if current_user.access > 2
-      column :firstname
-      column :lastname
-      column :email
-    end
-    column :school
-    column "Experience" do |c|
-      c.hexperience
-    end
-      end
-    end
+    
   end
 
   csv do
-    if current_user.researcher
-      if :matching_optin
+    
+      
         column "Id" do |c| 
           c.id
         end 
@@ -57,8 +52,8 @@ ActiveAdmin.register Candidate do
         column :first_hackathon
         column :meaning
         column :source
-      end
-    end
+
+
   end
 
    show do

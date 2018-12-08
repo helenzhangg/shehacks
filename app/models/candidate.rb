@@ -3,6 +3,8 @@ class Candidate < ActiveRecord::Base
     # belongs_to :second_preference
     # belongs_to :education
 
+    scope :corr, -> { where(:matching_optin => true)}
+    
     serialize :proficiencies
     serialize :pronouns
     serialize :roles
