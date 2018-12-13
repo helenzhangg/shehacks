@@ -56,7 +56,13 @@ ActiveAdmin.register Candidate do
         column :first_hackathon
         column :meaning
         column :source
-
+        column "Areas of Experience" do |c|
+          c.aexperience
+        end
+        column :focus
+        column :motivation
+        column :background_preference
+        
 
   end
 
