@@ -4,13 +4,14 @@ class Candidate < ActiveRecord::Base
     # belongs_to :education
 
     scope :corr, -> { where(:matching_optin => true)}
-    
+
     serialize :proficiencies
     serialize :pronouns
     serialize :roles
     serialize :tinterests
     serialize :motivations
     serialize :focus
+    serialize :aexperience
 
     has_and_belongs_to_many :interests
     has_and_belongs_to_many :aspirations

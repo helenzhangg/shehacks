@@ -8,6 +8,243 @@ class WelcomeController < ApplicationController
 
 	end
 
+	def pcsv
+		mfile = params[:mfile]
+		mc = CSV.read(mfile.tempfile)
+		mc = mc.drop(1)
+		for item in mc 
+			dietary_restrictions = ""; tshirt_size = ""; hackathon_count = ""; full_duration = false;
+			travel_reimbursement_requested = false; foreign_country = false; matching_optin = false;
+			hexperience = ""; proficiencies = []; tinterests = []; motivations = []; aexperience = [];
+			background_preference = ""; additional_info = ""; focus = []
+
+			fname = item[1]
+			lname = item[2]
+			email = item[3]
+			if item[4] != nil 
+				dietary_restrictions = item[4]
+			end
+			if item[6] != nil 
+				tshirt_size = item[6]
+			end
+			if item[7] != nil 
+				hackathon_count = item[7]
+			end
+			if item[8] != nil 
+				tmp = item[8]
+				if tmp == "1"
+					full_duration = true
+				end
+			end
+			if item[9] != nil
+				tmp = item[9]
+				if tmp == "1"
+					travel_reimbursement_requested = true
+				end
+			end
+			if item[10] != nil
+				if item[10] == "1"
+					foreign_country = true
+				end
+			end
+			if item[14] != nil
+				if item[14] == "Yes, I'd like to get matched!"
+					matching_optin = true
+				end
+			end
+			if item[15] != nil
+				hexperience = item[15]
+			end
+			if item[16] != nil 
+				proficiencies.push(item[16])
+			end
+			if item[17] != nil 
+				proficiencies.push(item[17])
+			end
+			if item[18] != nil 
+				proficiencies.push(item[18])
+			end
+			if item[19] != nil 
+				proficiencies.push(item[19])
+			end
+			if item[20] != nil 
+				proficiencies.push(item[20])
+			end
+			if item[21] != nil 
+				proficiencies.push(item[21])
+			end
+			if item[22] != nil 
+				proficiencies.push(item[22])
+			end
+			if item[23] != nil 
+				proficiencies.push(item[23])
+			end
+			if item[24] != nil 
+				proficiencies.push(item[24])
+			end
+
+			if item[25] != nil 
+				aexperience.push(item[25])
+			end
+			if item[26] != nil 
+				aexperience.push(item[26])
+			end
+			if item[27] != nil 
+				aexperience.push(item[27])
+			end
+			if item[28] != nil 
+				aexperience.push(item[28])
+			end
+			if item[29] != nil 
+				aexperience.push(item[29])
+			end
+			if item[30] != nil 
+				aexperience.push(item[30])
+			end
+			if item[31] != nil 
+				aexperience.push(item[31])
+			end
+			if item[32] != nil 
+				aexperience.push(item[32])
+			end
+			if item[33] != nil 
+				aexperience.push(item[33])
+			end
+			if item[34] != nil 
+				aexperience.push(item[34])
+			end
+
+			if item[35] != nil 
+				focus.push(item[35])
+			end
+			if item[36] != nil 
+				focus.push(item[36])
+			end
+			if item[37] != nil 
+				focus.push(item[37])
+			end
+			if item[38] != nil 
+				focus.push(item[38])
+			end
+			if item[39] != nil 
+				focus.push(item[39])
+			end
+			if item[40] != nil 
+				focus.push(item[40])
+			end
+			if item[41] != nil 
+				focus.push(item[41])
+			end
+			if item[42] != nil 
+				focus.push(item[42])
+			end
+			if item[43] != nil 
+				focus.push(item[43])
+			end
+			if item[44] != nil 
+				focus.push(item[44])
+			end
+			if item[45] != nil 
+				focus.push(item[45])
+			end
+			if item[46] != nil 
+				focus.push(item[46])
+			end
+
+			if item[47] != nil
+				motivations.push(item[47])
+			end
+			if item[48] != nil
+				motivations.push(item[48])
+			end
+			if item[49] != nil
+				motivations.push(item[49])
+			end
+			if item[50] != nil
+				motivations.push(item[50])
+			end
+			if item[51] != nil
+				motivations.push(item[51])
+			end
+			if item[52] != nil
+				motivations.push(item[52])
+			end
+			if item[53] != nil
+				motivations.push(item[53])
+			end
+
+			if item[54] != nil
+				tinterests.push(item[54])
+			end
+			if item[55] != nil
+				tinterests.push(item[55])
+			end
+			if item[56] != nil
+				tinterests.push(item[56])
+			end
+			if item[57] != nil
+				tinterests.push(item[57])
+			end
+			if item[58] != nil
+				tinterests.push(item[58])
+			end
+			if item[59] != nil
+				tinterests.push(item[59])
+			end
+			if item[60] != nil
+				tinterests.push(item[60])
+			end
+			if item[61] != nil
+				tinterests.push(item[61])
+			end
+
+			if item[62] != nil
+				background_preference = item[62]
+			end
+
+			if item[63] != nil
+				additional_info = item[63]
+			end
+
+			begin
+				candidate = Candidate.find_by(email: email)
+				if candidate != nil
+					candidate.firstname = fname
+					candidate.lastname = lname
+					candidate.email = email
+					candidate.dietary_restrictions = dietary_restrictions
+					candidate.tshirt_size = tshirt_size
+					candidate.proficiencies = proficiencies
+					candidate.tinterests = tinterests
+					candidate.aexperience = aexperience
+					candidate.background_preference = background_preference
+					candidate.additional_info = additional_info
+					candidate.hackathon_count = hackathon_count
+					candidate.focus = focus
+					candidate.motivations = motivations
+					candidate.hexperience = hexperience
+					candidate.travel_reimbursement_requested = travel_reimbursement_requested
+					candidate.matching_optin = matching_optin
+					if candidate.save
+						puts "Saved: #{e}"
+					end
+				else
+					Candidate.create(firstname: fname, lastname: lname, email: email,
+					dietary_restrictions: dietary_restrictions, tshirt_size: tshirt_size,
+					proficiencies: proficiencies, tinterests: tinterests, hexperience: hexperience,
+					aexperience: aexperience, background_preference: background_preference,
+					additional_info: additional_info, focus: focus, motivations: motivations,
+					travel_reimbursement_requested: travel_reimbursement_requested, matching_optin: matching_optin)
+					puts "Created: #{e}"
+				end
+			rescue => e
+				"Error: #{e}"
+			end
+
+		end
+		render :json => "Done: #{mc}"
+	end
+
 	def parsecsv
 		mfile = params[:mfile]
 		mc = CSV.read(mfile.tempfile)
