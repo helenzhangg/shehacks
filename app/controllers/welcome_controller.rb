@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
 		for item in mc 
 			dietary_restrictions = ""; tshirt_size = ""; hackathon_count = ""; full_duration = false;
 			travel_reimbursement_requested = false; foreign_country = false; matching_optin = false;
-			hexperience = ""; proficiencies = []; tinterests = []; motivations = []; aexperience = [];
+			hexperience = ""; proficiencies = []; tinterests = []; motivations = []; most_experienced = [];
 			background_preference = ""; additional_info = ""; focus = []
 
 			fname = item[1]
@@ -84,34 +84,34 @@ class WelcomeController < ApplicationController
 			end
 
 			if item[25] != nil 
-				aexperience.push(item[25])
+				most_experienced.push(item[25])
 			end
 			if item[26] != nil 
-				aexperience.push(item[26])
+				most_experienced.push(item[26])
 			end
 			if item[27] != nil 
-				aexperience.push(item[27])
+				most_experienced.push(item[27])
 			end
 			if item[28] != nil 
-				aexperience.push(item[28])
+				most_experienced.push(item[28])
 			end
 			if item[29] != nil 
-				aexperience.push(item[29])
+				most_experienced.push(item[29])
 			end
 			if item[30] != nil 
-				aexperience.push(item[30])
+				most_experienced.push(item[30])
 			end
 			if item[31] != nil 
-				aexperience.push(item[31])
+				most_experienced.push(item[31])
 			end
 			if item[32] != nil 
-				aexperience.push(item[32])
+				most_experienced.push(item[32])
 			end
 			if item[33] != nil 
-				aexperience.push(item[33])
+				most_experienced.push(item[33])
 			end
 			if item[34] != nil 
-				aexperience.push(item[34])
+				most_experienced.push(item[34])
 			end
 
 			if item[35] != nil 
@@ -216,7 +216,7 @@ class WelcomeController < ApplicationController
 					candidate.tshirt_size = tshirt_size
 					candidate.proficiencies = proficiencies
 					candidate.tinterests = tinterests
-					candidate.aexperience = aexperience
+					candidate.most_experienced = most_experienced
 					candidate.background_preference = background_preference
 					candidate.additional_info = additional_info
 					candidate.hackathon_count = hackathon_count
@@ -232,7 +232,7 @@ class WelcomeController < ApplicationController
 					Candidate.create(firstname: fname, lastname: lname, email: email,
 					dietary_restrictions: dietary_restrictions, tshirt_size: tshirt_size,
 					proficiencies: proficiencies, tinterests: tinterests, hexperience: hexperience,
-					aexperience: aexperience, background_preference: background_preference,
+					most_experienced: most_experienced, background_preference: background_preference,
 					additional_info: additional_info, focus: focus, motivations: motivations,
 					travel_reimbursement_requested: travel_reimbursement_requested, matching_optin: matching_optin)
 					puts "Created: #{e}"

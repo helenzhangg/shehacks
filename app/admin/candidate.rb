@@ -57,12 +57,12 @@ ActiveAdmin.register Candidate do
         column :meaning
         column :source
         column "Areas of Experience" do |c|
-          c.aexperience
+          c.most_experienced
         end
         column :focus
         column :motivation
         column :background_preference
-        
+
 
   end
 
