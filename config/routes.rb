@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   post '/rsvp', to: 'welcome#rsvppost'
 
-  get '/seu', to: 'welcome#seu'
-  post '/seu', to: 'welcome#pcsv'
+  # get '/seu', to: 'welcome#seu'
+  # post '/seu', to: 'welcome#pcsv'
 end
