@@ -4,6 +4,103 @@ class WelcomeController < ApplicationController
 	def index
 	end	
 
+	def seu
+
+	end
+
+	def parsecsv
+		mfile = params[:mfile]
+		mc = CSV.read(mfile.tempfile)
+		mc = mc.drop(1)
+		for item in mc 
+				puts "This be: #{item}"
+				fname = item[1]
+				lname = item[2]
+				email = item[3]
+				pronouns = []
+				age = 0; school = ""; school_type = ""; major = ""; graduation = "";
+				traveling_from = ""; hexperience = ""; first_hackathon = false; meaning = "";
+				github = ""; linkedin = ""; resume = ""; website = ""; source = ""
+				if item[4] != nil
+					pronouns.push(item[4])
+				end
+				if item[5] != nil
+					pronouns.push(item[5])
+				end
+				if item[6] != nil 
+					pronouns.push(item[6])
+				end
+				if item[7] != nil
+					pronouns.push(item[7])
+				end
+				if item[8] != nil
+					pronouns.push(item[8])
+				end
+				if item[9] != nil
+					pronouns.push(item[9])
+				end
+				if item[10] != nil 
+					age = item[10]
+				end
+				if item[11] != nil 
+					school = item[11]
+				end
+				if item[12] != nil 
+					school_type = item[12]
+				end
+				if item[13] != nil 
+					major = item[13]
+				end
+				if item[14] != nil 
+					graduation = item[14]
+				end
+				if item[15] != nil 
+					traveling_from = item[15]
+				end
+				if item[25] != nil 
+					hexperience = item[25]
+				end
+				if item[26] != nil 
+					tmp = item[26]
+					if tmp == "0"
+						first_hackathon = false
+					else
+						first_hackathon = true
+					end
+				end
+				if item[27] != nil
+					meaning = item[27]
+				end
+				if item[28] != nil 
+					resume = item[28]
+				end
+				if item[29] != nil
+					linkedin = item[29]
+				end
+				if item[30] != nil 
+					github = item[30]
+				end
+				if item[31] != nil 
+					website = item[31]
+				end
+				if item[32] != nil 
+					source = item[32]
+				end
+			begin 
+				Candidate.create(firstname: fname, lastname: lname, email: email, pronouns: pronouns,
+					age: age, school: school, school_type: school_type, major: major, graduation: graduation,
+					traveling_from: traveling_from, hexperience: hexperience,
+					first_hackathon: first_hackathon, meaning: meaning, resume: resume, linkedin: linkedin,
+					github: github, website: website, source: source)
+				puts "Success creating: #{email}"
+		rescue => e 
+			puts "Error: #{e}"
+		end
+		end
+		
+		render :json => "I have: #{mc}"
+	end
+
 	def typeformget
 		render :json => "Typeform Get called."
 	end

@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   post '/typeform', to: 'welcome#typeformpost'
 
   post '/rsvp', to: 'welcome#rsvppost'
+
+  get '/seu', to: 'welcome#seu'
+  post '/seu', to: 'welcome#parsecsv'
 end
