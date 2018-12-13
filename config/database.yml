@@ -22,7 +22,7 @@ test:
 
 production:
   <<: *default
-  host: ec2-75-101-138-26.compute-1.amazonaws.com
+  host: <%= ENV['DB_HOST'] %>
   user: <%= ENV['DB_USER'] %>
   database: <%= ENV['DB_NAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
