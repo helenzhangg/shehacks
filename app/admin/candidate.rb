@@ -60,7 +60,7 @@ ActiveAdmin.register Candidate do
           c.most_experienced
         end
         column :focus
-        column :motivation
+        column :motivations
         column :background_preference
 
 

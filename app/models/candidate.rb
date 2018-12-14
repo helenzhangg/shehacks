@@ -9,7 +9,7 @@ class Candidate < ActiveRecord::Base
     serialize :pronouns
     serialize :roles
     serialize :tinterests
-    serialize :motivation
+    serialize :motivations
     serialize :focus
     serialize :aexperience
     serialize :most_experienced
