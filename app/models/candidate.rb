@@ -12,6 +12,7 @@ class Candidate < ActiveRecord::Base
     serialize :motivations
     serialize :focus
     serialize :aexperience
+    serialize :most_experienced
 
     has_and_belongs_to_many :interests
     has_and_belongs_to_many :aspirations
