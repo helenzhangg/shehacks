@@ -62,9 +62,13 @@ ActiveAdmin.register Candidate do
         column :focus
         column :motivations
         column :background_preference
+        column "How many hackathons have you been to before?" do |c|
+          c.hackathon_count
+        end
+        column "Which of these topics interests you most?" do |c|
+          c.tinterests
+        end
         column :additional_info
-        column :tinterests
-        column :hackathon_count
   end
 
    show do
