@@ -62,8 +62,9 @@ ActiveAdmin.register Candidate do
         column :focus
         column :motivations
         column :background_preference
-
-
+        column :additional_info
+        column :tinterests
+        column :hackathon_count
   end
 
    show do
