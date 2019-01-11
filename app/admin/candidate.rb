@@ -67,9 +67,10 @@ ActiveAdmin.register Candidate do
           c.tinterests
         end
         column :additional_info
-        if current_user.access_level > 2
-          column :resume
-        end
+        column :resume
+        # if current_user.access_level > 2
+        #   column :resume
+        # end
   end
 
    show do
