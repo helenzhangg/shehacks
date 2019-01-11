@@ -36,8 +36,6 @@ ActiveAdmin.register Candidate do
   end
 
   csv do
-    
-      
         column "Id" do |c| 
           c.id
         end 
@@ -69,6 +67,9 @@ ActiveAdmin.register Candidate do
           c.tinterests
         end
         column :additional_info
+        if current_user.access_level > 2
+          column :resume
+        end
   end
 
    show do
