@@ -5,10 +5,10 @@
 *= require bootstrap-timepicker
 */
 
-$navbar-default-bg: #2c3e50;
+$navbar-default-bg: #FFFFFF;
 $light-orange: #ff8c00;
 $navbar-default-color: $light-orange;
-$link-color: #2c3e50;
+$link-color: #039be5;
 $pagination-active-bg: #2c3e50;
 $pagination-active-border: #2c3e50;
 
@@ -42,6 +42,14 @@ a:hover{
 	color: #1abc9c;
 }
 
+#techtogether-nav-logo{
+	width: auto;
+	height: 7vw;
+	float: left;
+	margin-top: 2em;
+}
+
+
 .nav_item {
 	margin-left: 25px;
 	float: left;
@@ -70,7 +78,7 @@ h1{
 	letter-spacing: -2px;
 	margin-bottom: 30px;
 	text-align: center;
-	
+
 
 }
 
@@ -168,7 +176,7 @@ h3{
   -ms-transition:.5s;
   -moz-transition:.5s;
   -webkit-transition:.5s;
-	
+
 }
 .border-blue-browse {
 	background-color: white;
@@ -190,7 +198,7 @@ h3{
 
 .chef_info {
 	margin-top: 10px;
-	
+
 }
 
 .gravatar{
